@@ -1,0 +1,28 @@
+{
+  "name": "top-todo-list",
+  "version": "1.0.0",
+  "description": "Todo list app with webpack for the odin project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack serve --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azazel-oss/TOP-Todo-List.git"
+  },
+  "author": "Asad Mahmood",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/azazel-oss/TOP-Todo-List/issues"
+  },
+  "homepage": "https://github.com/azazel-oss/TOP-Todo-List#readme",
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  }
+}
