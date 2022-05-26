@@ -1,4 +1,6 @@
 import "./style.css";
-console.log("This is now connected");
+import Logo from "./Todo_Logo.png";
 
-throw new Error("This is a sample error");
+const logoImageEl = document.getElementById("todo_logo");
+
+logoImageEl.src = Logo;
