@@ -34,6 +34,11 @@ header {
   align-items: center;
 }
 
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .logo {
   height: 2em;
 }
@@ -47,4 +52,18 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.6em;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+footer a:hover,
+footer a:focus {
+  color: #468981;
+  cursor: pointer;
 }
