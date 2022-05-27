@@ -9,7 +9,7 @@
       src="https://kit.fontawesome.com/f0bbacaee3.js"
       crossorigin="anonymous"
     ></script>
-    <title>Todo App</title>
+    <title>TooDoo</title>
   </head>
   <body>
     <div class="container">
@@ -21,7 +21,43 @@
         </div>
         <a href="https://github.com/azazel-oss/TOP-Todo-List"> Toodoo </a>
       </header>
-      <aside>This is the sidebar</aside>
+      <aside>
+        <ul class="projects">
+          <li class="project scratchpad">
+            <button>
+              <i class="fa-solid fa-clipboard"></i><span>Scratchpad</span>
+            </button>
+          </li>
+          <hr />
+          <li class="project">
+            <button>
+              <i class="fa-solid fa-marker"></i> <span>My new project</span>
+            </button>
+            <button class="remove">&Cross;</button>
+          </li>
+          <li class="project">
+            <button>
+              <i class="fa-solid fa-marker"></i> <span>Important project</span>
+            </button>
+            <button class="remove">&Cross;</button>
+          </li>
+          <li class="project">
+            <button>
+              <i class="fa-solid fa-marker"></i>
+              <span>Is this a new project</span>
+            </button>
+            <button class="remove">&Cross;</button>
+          </li>
+          <li class="project">
+            <button>
+              <i class="fa-solid fa-marker"></i>
+              <span>Wish I had lesser projects</span>
+            </button>
+            <button class="remove">&Cross;</button>
+          </li>
+        </ul>
+        <button class="add-category">Add new category</button>
+      </aside>
       <main>This is my main content</main>
       <footer>
         <i class="fa-brands fa-github"></i> &copy;
