@@ -69,7 +69,7 @@ hr {
 .project {
   list-style: none;
   padding: 0.5em;
-  border-radius: 5px;
+  border-radius: 1.4em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -126,6 +126,32 @@ hr {
 main {
   color: #031926;
   padding: 0.5em;
+}
+
+.empty {
+  width: 100%;
+  height: 100%;
+  background-image: url("./no-notes.jpeg");
+  background-position: bottom center;
+  object-fit: cover;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty button {
+  border: none;
+  background-color: #f4e9cd;
+  border-radius: 50%;
+  padding: 1em 1.4em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: transform 0.1s ease-in;
+}
+
+.empty button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 footer {
