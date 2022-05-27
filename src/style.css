@@ -1,16 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Titan+One&display=swap");
+* {
+  font-family: "Noto Sans", sans-serif;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
   background-color: #f4e9cd;
   color: #9dbebb;
-  font-family: "Noto Sans", sans-serif;
 }
 
 .container {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 250px 1fr;
   grid-template-rows: 7em 1fr 5em;
   min-height: 100vh;
 }
@@ -27,7 +30,6 @@ aside {
 }
 
 header {
-  font-family: "Titan One";
   font-size: 3rem;
   padding-left: 1em;
   display: flex;
@@ -35,6 +37,7 @@ header {
 }
 
 header a {
+  font-family: "Titan One";
   text-decoration: none;
   color: inherit;
 }
@@ -46,6 +49,83 @@ header a {
 .logo img {
   width: 100%;
   height: 100%;
+}
+
+aside {
+  padding: 0.5em;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 0;
+}
+
+hr {
+  width: 4em;
+}
+
+.project {
+  list-style: none;
+  padding: 0.5em;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project i {
+  color: #f4e9cd;
+  margin-right: 0.6em;
+}
+
+.remove {
+  height: 25px;
+  width: 25px;
+}
+
+.remove:hover {
+  background-color: #f4e9cd;
+  border-radius: 50%;
+  color: #031926;
+}
+
+.project:hover,
+.project:focus {
+  background-color: #062e45;
+}
+
+.project button {
+  background-color: inherit;
+  border: none;
+  color: #9dbebb;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: left;
+}
+
+.add-category {
+  border: none;
+  background-color: #f4e9cd;
+  color: #031926;
+  padding: 0.7em 2em;
+  display: block;
+  margin: 0 auto;
+  border-radius: 2em;
+  transition: transform 0.1s ease-in;
+}
+
+.add-category:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+main {
+  color: #031926;
+  padding: 0.5em;
 }
 
 footer {
@@ -64,6 +144,6 @@ footer a {
 
 footer a:hover,
 footer a:focus {
-  color: #468981;
+  color: #5f9a90;
   cursor: pointer;
 }
