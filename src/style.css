@@ -232,10 +232,11 @@ main {
   padding: 1em;
   border-radius: 5px;
   position: relative;
+  border: 1px solid #031926;
 }
 
 .note:hover {
-  box-shadow: #031926 0 0 5px;
+  box-shadow: #031926 0 0 8px;
   cursor: pointer;
 }
 
