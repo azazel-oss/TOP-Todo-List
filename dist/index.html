@@ -12,6 +12,56 @@
     <title>TooDoo</title>
   </head>
   <body>
+    <section>
+      <div class="overlay">
+        <div class="modal modal-project">
+          <form action="/index.html" method="get">
+            <h3 class="modal-title">New Project</h3>
+            <label for="project-name">Project name</label>
+            <br />
+            <input type="text" id="project-name" />
+            <div class="buttons">
+              <button class="btn btn-add" type="submit">Add</button>
+              <button class="btn btn-cancel" type="reset">Cancel</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal modal-note">
+          <form action="/index.html" method="get">
+            <h3 class="modal-title">New note</h3>
+            <label for="note-title">Title</label>
+            <br />
+            <input type="text" id="note-title" />
+            <br />
+            <label for="note-description">Description</label>
+            <br />
+            <textarea
+              name="description"
+              id="note-description"
+              cols="25"
+              rows="8"
+            ></textarea>
+            <br />
+            <label for="note-date">Due date</label>
+            <br />
+            <input type="date" id="note-date" required />
+            <br />
+            <label for="note-priority">Priority</label>
+            <br />
+            <select name="priority" id="note-urgency">
+              <option value="0">Low</option>
+              <option value="1">Medium</option>
+              <option value="2">High</option>
+            </select>
+            <br />
+            <div class="buttons">
+              <button class="btn btn-add" type="submit">Add</button>
+              <button class="btn btn-cancel" type="reset">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
     <div class="container">
       <header>
         <div class="logo">
@@ -25,7 +75,7 @@
         <ul class="projects">
           <li class="project scratchpad">
             <button>
-              <i class="fa-solid fa-clipboard"></i><span>Scratchpad</span>
+              <i class="fa-solid fa-clipboard"></i><span>Scratch Pad</span>
             </button>
           </li>
           <hr />
@@ -56,11 +106,153 @@
             <button class="remove">&Cross;</button>
           </li>
         </ul>
-        <button class="add-category">Add new category</button>
+        <button class="btn add-category">Add new category</button>
       </aside>
       <main>
         <div class="empty">
           <button>&plus;</button>
+        </div>
+        <div class="notes">
+          <div class="btn new-note">&plus; Add new note</div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">This is a note description</div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">
+              This is a note description but it is way longer and needs to be
+              this way so that I can design my pages
+            </div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">This is a note description</div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">This is a note description</div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">This is a note description</div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">
+              This is a note description and it makes no sense to keep this here
+              but since I want it to be here it will stay here and it needs to
+              be here now because I love changing my mind
+            </div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">
+              This is a note description and it makes no sense to keep this here
+              but since I want it to be here it will stay here and it needs to
+              be here now because I love changing my mind
+            </div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">
+              This is a note description and it makes no sense to keep this here
+              but since I want it to be here it will stay here and it needs to
+              be here now because I love changing my mind
+            </div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">
+              This is a note description and it makes no sense to keep this here
+              but since I want it to be here it will stay here and it needs to
+              be here now because I love changing my mind
+            </div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">
+              This is a note description and it makes no sense to keep this here
+              but since I want it to be here it will stay here and it needs to
+              be here now because I love changing my mind
+            </div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">
+              This is a note description and it makes no sense to keep this here
+              but since I want it to be here it will stay here and it needs to
+              be here now because I love changing my mind
+            </div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">This is a note description</div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">This is a note description</div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
+          <div class="note">
+            <div class="title">This is a note title</div>
+            <div class="description">This is a note description</div>
+            <div class="priority-label">
+              <i class="fa-solid fa-exclamation"></i>
+              <div class="due-date">20/12/2020</div>
+            </div>
+          </div>
         </div>
       </main>
       <footer>

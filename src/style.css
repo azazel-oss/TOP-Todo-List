@@ -107,10 +107,8 @@ hr {
   text-align: left;
 }
 
-.add-category {
+.btn {
   border: none;
-  background-color: #f4e9cd;
-  color: #031926;
   padding: 0.7em 2em;
   display: block;
   margin: 0 auto;
@@ -118,14 +116,78 @@ hr {
   transition: transform 0.1s ease-in;
 }
 
-.add-category:hover {
+.btn:hover {
   transform: scale(1.05);
   cursor: pointer;
 }
 
+.add-category {
+  background-color: #f4e9cd;
+  color: #031926;
+}
+
+.overlay {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: #03192699;
+  z-index: 1000;
+  display: none; /* It needs to be set to flex so that it can work properly */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-project,
+.modal-note {
+  padding: 2em;
+  border-radius: 10px;
+}
+
+.modal-title {
+  margin-top: 0;
+}
+
+input,
+textarea,
+select {
+  margin: 10px auto;
+  border: none;
+  padding: 0.5em;
+  border-radius: 0.2em;
+  width: 90%;
+  background-color: #fff;
+}
+
+.modal-project {
+  display: none;
+  background-color: #031926;
+  color: #f4e9cd;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 10px;
+  gap: 2em;
+}
+
+.btn-add {
+  background-color: #a2f7b0;
+  font-weight: 700;
+}
+
+.btn-cancel {
+  background-color: #f7afa1;
+  font-weight: 700;
+}
+
+.modal-note {
+  display: none;
+  background-color: #f4e9cd;
+  color: #031926;
+}
 main {
   color: #031926;
-  padding: 0.5em;
+  padding: 1.2em;
 }
 
 .empty {
@@ -152,6 +214,51 @@ main {
 .empty button:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+
+.notes {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.new-note {
+  background-color: #031926;
+  color: #f4e9cd;
+  grid-column: 1/-1;
+}
+
+.note {
+  padding: 1em;
+  border-radius: 5px;
+  position: relative;
+}
+
+.note:hover {
+  box-shadow: #031926 0 0 5px;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 0.9rem;
+  margin: 0.5em 0;
+}
+
+.priority-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin: 1rem;
+  margin-bottom: 0;
+}
+
+.priority-label i {
+  color: red;
 }
 
 footer {
