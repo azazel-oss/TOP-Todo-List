@@ -2,7 +2,11 @@ import "./style.css";
 import Logo from "./Todo_Logo.png";
 import "./ModalOperations";
 import Project from "./Project";
-import { getNewNoteElement, getNewProjectElement } from "./HtmlElements";
+import {
+  getHtmlForProjectList,
+  getNewNoteElement,
+  getNewProjectElement,
+} from "./HtmlElements";
 
 const logoImageEl = document.getElementById("todo_logo");
 const newProjectForm = document.getElementById("project-form");
@@ -14,12 +18,13 @@ const newNoteDueDateEl = document.getElementById("note-date");
 const newNotePriorityEl = document.getElementById("note-priority");
 const projectListEl = document.getElementById("project-list-items");
 const noteListEl = document.getElementById("notes-list-items");
+const scratchPadEl = document.getElementById("scratchpad");
 
 logoImageEl.src = Logo;
 
 const scratchPad = new Project("Scratch Pad");
-const projectList = [scratchPad];
-const currentProject = projectList[0];
+let projectList = [];
+let currentProject = scratchPad;
 
 newNoteForm.addEventListener("submit", addNewNote);
 newProjectForm.addEventListener("submit", addNewProject);
@@ -48,4 +53,26 @@ function addNewProject(event) {
   projectList.push(newProject);
   newProjectName.value = "";
   projectListEl.appendChild(getNewProjectElement(newProject));
+}
+
+projectListEl.addEventListener("click", projectClickHandler);
+scratchPadEl.addEventListener("click", projectClickHandler);
+
+function projectClickHandler(event) {
+  let id;
+  const element = event.target.closest(".project");
+  if (element) {
+    document
+      .querySelectorAll(".project")
+      .forEach((project) => project.classList.remove("active-project"));
+    id = element.dataset.id;
+    element.classList.add("active-project");
+    currentProject = projectList.find((project) => project.projectId === id);
+    console.log(currentProject);
+  }
+
+  if (event.target.classList.contains("remove")) {
+    projectList = projectList.filter((project) => project.projectId !== id);
+    projectListEl.innerHTML = getHtmlForProjectList(projectList);
+  }
 }
