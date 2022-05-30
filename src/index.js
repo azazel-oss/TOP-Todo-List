@@ -2,7 +2,7 @@ import "./style.css";
 import Logo from "./Todo_Logo.png";
 import "./ModalOperations";
 import Project from "./Project";
-import { getNewNoteHtml, getNewProjectHtml } from "./HtmlGenerator";
+import { getNewNoteElement, getNewProjectElement } from "./HtmlElements";
 
 const logoImageEl = document.getElementById("todo_logo");
 const newProjectForm = document.getElementById("project-form");
@@ -36,8 +36,8 @@ function addNewNote(event) {
   newNoteDescriptionEl.value = "";
   newNoteDueDateEl.value = "dd/mm/yyyy";
   newNotePriorityEl.value = 0;
-  noteListEl.innerHTML += getNewNoteHtml(
-    currentProject.notes[currentProject.notes.length - 1]
+  noteListEl.appendChild(
+    getNewNoteElement(currentProject.notes[currentProject.notes.length - 1])
   );
 }
 
@@ -47,6 +47,5 @@ function addNewProject(event) {
   const newProject = new Project(projectName);
   projectList.push(newProject);
   newProjectName.value = "";
-  const projectHtml = getNewProjectHtml(newProject);
-  projectListEl.innerHTML += projectHtml;
+  projectListEl.appendChild(getNewProjectElement(newProject));
 }

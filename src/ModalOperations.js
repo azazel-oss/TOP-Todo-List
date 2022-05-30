@@ -4,6 +4,7 @@ function openNoteModal() {
 }
 
 function openProjectModal() {
+  console.log("open");
   overlay.style.display = "flex";
   projectModal.style.display = "block";
 }
