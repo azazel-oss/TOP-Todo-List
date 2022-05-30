@@ -40,3 +40,20 @@ export function getHtmlForProjectList(projectList) {
     })
     .join("");
 }
+
+export function getHtmlForNoteList(project) {
+  return project.notes
+    .map((note) => {
+      return `
+    <div class="note">
+    <div class="title">${note.title}</div>
+    <div class="description">${note.description}</div>
+    <div class="priority-label">
+      <i class="fa-solid fa-exclamation"></i>
+      <div class="due-date">${note.dueDate}</div>
+    </div>
+    </div> 
+    `;
+    })
+    .join("");
+}

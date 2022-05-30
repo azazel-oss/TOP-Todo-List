@@ -3,6 +3,7 @@ import Logo from "./Todo_Logo.png";
 import "./ModalOperations";
 import Project from "./Project";
 import {
+  getHtmlForNoteList,
   getHtmlForProjectList,
   getNewNoteElement,
   getNewProjectElement,
@@ -19,11 +20,13 @@ const newNotePriorityEl = document.getElementById("note-priority");
 const projectListEl = document.getElementById("project-list-items");
 const noteListEl = document.getElementById("notes-list-items");
 const scratchPadEl = document.getElementById("scratchpad");
+const emptyNoteEl = document.querySelector(".empty");
+const addNoteBtn = document.querySelector(".new-note");
 
 logoImageEl.src = Logo;
 
 const scratchPad = new Project("Scratch Pad");
-let projectList = [];
+let projectList = [scratchPad];
 let currentProject = scratchPad;
 
 newNoteForm.addEventListener("submit", addNewNote);
@@ -37,6 +40,10 @@ function addNewNote(event) {
   const priority = newNotePriorityEl.value;
   currentProject.addNote(title, description, date, priority);
   console.log(currentProject.notes);
+  if (currentProject.notes.length > 0) {
+    addNoteBtn.style.display = "flex";
+    emptyNoteEl.style.display = "none";
+  }
   newNoteTitleEl.value = "";
   newNoteDescriptionEl.value = "";
   newNoteDueDateEl.value = "dd/mm/yyyy";
@@ -66,13 +73,27 @@ function projectClickHandler(event) {
       .querySelectorAll(".project")
       .forEach((project) => project.classList.remove("active-project"));
     id = element.dataset.id;
+    console.log(id);
     element.classList.add("active-project");
-    currentProject = projectList.find((project) => project.projectId === id);
-    console.log(currentProject);
+    currentProject = id
+      ? projectList.find((project) => project.projectId === id)
+      : scratchPad;
+    noteListEl.innerHTML = getHtmlForNoteList(currentProject);
+    if (currentProject.notes.length === 0) {
+      emptyNoteEl.style.display = "flex";
+      addNoteBtn.style.display = "none";
+    } else {
+      emptyNoteEl.style.display = "none";
+      addNoteBtn.style.display = "flex";
+    }
   }
 
   if (event.target.classList.contains("remove")) {
     projectList = projectList.filter((project) => project.projectId !== id);
     projectListEl.innerHTML = getHtmlForProjectList(projectList);
+    if (element.classList.contains("active-project")) {
+      currentProject = projectList[0];
+      scratchPadEl.classList.add("active-project");
+    }
   }
 }

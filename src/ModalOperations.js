@@ -25,9 +25,11 @@ const overlay = document.querySelector(".overlay");
 const addProjectBtn = document.querySelector(".add-category");
 const addNoteBtn = document.querySelector(".new-note");
 const cancelBtns = document.querySelectorAll(".btn-cancel");
+const emptyNoteBtn = document.getElementById("empty-notes-button");
 
 overlay.addEventListener("click", closeModal);
 addProjectBtn.addEventListener("click", openProjectModal);
+emptyNoteBtn.addEventListener("click", openNoteModal);
 addNoteBtn.addEventListener("click", openNoteModal);
 cancelBtns.forEach((button) => {
   button.addEventListener("click", closeModal);
