@@ -26,7 +26,7 @@ const addNoteBtn = document.querySelector(".new-note");
 logoImageEl.src = Logo;
 
 const scratchPad = new Project("Scratch Pad");
-let projectList = [scratchPad];
+let projectList = [];
 let currentProject = scratchPad;
 
 newNoteForm.addEventListener("submit", addNewNote);
@@ -92,8 +92,9 @@ function projectClickHandler(event) {
     projectList = projectList.filter((project) => project.projectId !== id);
     projectListEl.innerHTML = getHtmlForProjectList(projectList);
     if (element.classList.contains("active-project")) {
-      currentProject = projectList[0];
+      currentProject = scratchPad;
       scratchPadEl.classList.add("active-project");
+      noteListEl.innerHTML = getHtmlForNoteList(currentProject);
     }
   }
 }
