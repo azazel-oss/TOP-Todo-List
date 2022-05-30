@@ -15,11 +15,16 @@
     <section>
       <div class="overlay">
         <div class="modal modal-project">
-          <form action="/index.html" method="get">
+          <form id="project-form" action="/index.html" method="get">
             <h3 class="modal-title">New Project</h3>
             <label for="project-name">Project name</label>
             <br />
-            <input type="text" id="project-name" />
+            <input
+              type="text"
+              id="project-name"
+              maxlength="20"
+              placeholder="(Maximum 20 char)"
+            />
             <div class="buttons">
               <button class="btn btn-add" type="submit">Add</button>
               <button class="btn btn-cancel" type="reset">Cancel</button>
@@ -27,7 +32,7 @@
           </form>
         </div>
         <div class="modal modal-note">
-          <form action="/index.html" method="get">
+          <form id="note-form" action="/index.html" method="get">
             <h3 class="modal-title">New note</h3>
             <label for="note-title">Title</label>
             <br />
@@ -48,7 +53,7 @@
             <br />
             <label for="note-priority">Priority</label>
             <br />
-            <select name="priority" id="note-urgency">
+            <select name="priority" id="note-priority">
               <option value="0">Low</option>
               <option value="1">Medium</option>
               <option value="2">High</option>
@@ -72,7 +77,7 @@
         <a href="https://github.com/azazel-oss/TOP-Todo-List"> Toodoo </a>
       </header>
       <aside>
-        <ul class="projects">
+        <ul id="project-list-items" class="projects">
           <li class="project scratchpad">
             <button>
               <i class="fa-solid fa-clipboard"></i><span>Scratch Pad</span>
@@ -112,7 +117,7 @@
         <div class="empty">
           <button>&plus;</button>
         </div>
-        <div class="notes">
+        <div id="notes-list-items" class="notes">
           <div class="btn new-note">Add new note</div>
           <div class="note">
             <div class="title">This is a note title</div>
