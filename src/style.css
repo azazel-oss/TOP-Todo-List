@@ -132,7 +132,7 @@ hr {
   width: 100vw;
   background-color: #03192699;
   z-index: 1000;
-  display: flex; /* It needs to be set to flex so that it can work properly */
+  display: none; /* It needs to be set to flex so that it can work properly */
   justify-content: center;
   align-items: center;
 }
@@ -181,6 +181,7 @@ select {
 }
 
 .modal-note {
+  display: none;
   background-color: #f4e9cd;
   color: #031926;
 }
@@ -218,7 +219,7 @@ main {
 .notes {
   display: grid;
   gap: 1em;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .new-note {

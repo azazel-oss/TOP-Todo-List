@@ -3,6 +3,10 @@ import { v4 as uuidv4 } from "uuid";
 
 class Project {
   notes = [];
+  constructor(name) {
+    this.projectId = uuidv4();
+    this.name = name;
+  }
   addNote(title, description, dueDate, priority) {
     const id = uuidv4();
     const note = new Note(id, title, description, dueDate, priority);
