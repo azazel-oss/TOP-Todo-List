@@ -27,15 +27,17 @@ const addNoteBtn = document.querySelector(".new-note");
 
 logoImageEl.src = Logo;
 
-const scratchPad =
-  Object.assign(
-    new Project(),
-    JSON.parse(localStorage.getItem("scratchPadTOODOO"))
-  ) || new Project("Scratch Pad");
-let projectList =
-  JSON.parse(localStorage.getItem("projectListTOODOO")).map((project) =>
-    Object.assign(new Project(), project)
-  ) || [];
+const scratchPad = localStorage.getItem("scratchPadTOODOO")
+  ? Object.assign(
+      new Project(),
+      JSON.parse(localStorage.getItem("scratchPadTOODOO"))
+    )
+  : new Project("Scratch Pad");
+let projectList = localStorage.getItem("projectListTOODOO")
+  ? JSON.parse(localStorage.getItem("projectListTOODOO")).map((project) =>
+      Object.assign(new Project(), project)
+    )
+  : [];
 let currentProject = scratchPad;
 
 newNoteForm.addEventListener("submit", addNewNote);
