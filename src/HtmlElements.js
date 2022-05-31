@@ -2,6 +2,12 @@ export function getNewNoteElement(note) {
   const newNote = document.createElement("div");
   newNote.classList.add("note");
   newNote.dataset.id = note.id;
+  const icon =
+    note.priority === "0"
+      ? "hourglass"
+      : note.priority === "1"
+      ? "angles-right"
+      : "exclamation";
   newNote.innerHTML = `
     <section class="note-header">
       <div class="title">${note.title}</div>
@@ -12,7 +18,7 @@ export function getNewNoteElement(note) {
     </section>
     <div class="description">${note.description}</div>
     <div class="priority-label">
-      <i class="fa-solid fa-exclamation"></i>
+      <i data-priority=${note.priority} class="fa-solid fa-${icon}"></i>
       <div class="due-date">${note.dueDate}</div>
     </div>
   `;
@@ -50,6 +56,12 @@ export function getHtmlForProjectList(projectList) {
 export function getHtmlForNoteList(project) {
   return project.notes
     .map((note) => {
+      const icon =
+        note.priority === "0"
+          ? "hourglass"
+          : note.priority === "1"
+          ? "angles-right"
+          : "exclamation";
       return `
     <div class="note" data-id=${note.id}>
       <section class="note-header">
@@ -61,7 +73,7 @@ export function getHtmlForNoteList(project) {
       </section>
       <div class="description">${note.description}</div>
       <div class="priority-label">
-        <i class="fa-solid fa-exclamation"></i>
+        <i data-priority=${note.priority} class="fa-solid fa-${icon}"></i>
         <div class="due-date">${note.dueDate}</div>
       </div>
     </div> 

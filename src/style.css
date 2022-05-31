@@ -225,6 +225,16 @@ main {
   justify-content: space-between;
 }
 
+i.fa-solid[data-priority="0"] {
+  color: green;
+}
+i.fa-solid[data-priority="1"] {
+  color: blue;
+}
+i.fa-solid[data-priority="2"] {
+  color: red;
+}
+
 .edit-note {
   padding: 5px;
   border-radius: 50%;
