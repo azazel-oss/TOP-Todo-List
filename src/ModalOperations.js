@@ -1,4 +1,4 @@
-function openNoteModal() {
+function openNoteModal(note = null) {
   overlay.style.display = "flex";
   noteModal.style.display = "block";
 }

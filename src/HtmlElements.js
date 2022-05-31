@@ -3,7 +3,10 @@ export function getNewNoteElement(note) {
   newNote.classList.add("note");
   newNote.dataset.id = note.id;
   newNote.innerHTML = `
-    <div class="title">${note.title}</div>
+    <section class="note-header">
+      <div class="title">${note.title}</div>
+      <div class="remove-note">&Cross;</div>
+    </section>
     <div class="description">${note.description}</div>
     <div class="priority-label">
       <i class="fa-solid fa-exclamation"></i>

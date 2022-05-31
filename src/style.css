@@ -220,6 +220,22 @@ main {
   cursor: pointer;
 }
 
+.note-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.remove-note {
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.remove-note:hover,
+.remove-note:focus {
+  background-color: #031926;
+  color: #f4e9cd;
+}
+
 .notes {
   display: grid;
   gap: 1em;

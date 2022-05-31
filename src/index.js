@@ -63,7 +63,31 @@ function addNewProject(event) {
 }
 
 projectListEl.addEventListener("click", projectClickHandler);
+noteListEl.addEventListener("click", noteClickHandler);
 scratchPadEl.addEventListener("click", projectClickHandler);
+
+function noteClickHandler(event) {
+  let noteId;
+  const element = event.target.closest(".note");
+  if (element) {
+    noteId = element.dataset.id;
+  }
+
+  if (event.target.classList.contains("remove-note")) {
+    currentProject.notes = currentProject.notes.filter(
+      (note) => note.id !== noteId
+    );
+    console.log(noteId);
+    noteListEl.innerHTML = getHtmlForNoteList(currentProject);
+    if (currentProject.notes.length === 0) {
+      emptyNoteEl.style.display = "flex";
+      addNoteBtn.style.display = "none";
+    } else {
+      emptyNoteEl.style.display = "none";
+      addNoteBtn.style.display = "flex";
+    }
+  }
+}
 
 function projectClickHandler(event) {
   let id;
@@ -73,7 +97,6 @@ function projectClickHandler(event) {
       .querySelectorAll(".project")
       .forEach((project) => project.classList.remove("active-project"));
     id = element.dataset.id;
-    console.log(id);
     element.classList.add("active-project");
     currentProject = id
       ? projectList.find((project) => project.projectId === id)
@@ -98,3 +121,15 @@ function projectClickHandler(event) {
     }
   }
 }
+
+function loadScratchPad() {
+  if (currentProject.notes.length === 0) {
+    emptyNoteEl.style.display = "flex";
+    addNoteBtn.style.display = "none";
+  } else {
+    emptyNoteEl.style.display = "none";
+    addNoteBtn.style.display = "flex";
+  }
+}
+
+loadScratchPad();
