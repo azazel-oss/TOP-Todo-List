@@ -48,13 +48,16 @@ export function getHtmlForNoteList(project) {
   return project.notes
     .map((note) => {
       return `
-    <div class="note">
-    <div class="title">${note.title}</div>
-    <div class="description">${note.description}</div>
-    <div class="priority-label">
-      <i class="fa-solid fa-exclamation"></i>
-      <div class="due-date">${note.dueDate}</div>
-    </div>
+    <div class="note" data-id=${note.id}>
+      <section class="note-header">
+        <div class="title">${note.title}</div>
+        <div class="remove-note">&Cross;</div>
+      </section>
+      <div class="description">${note.description}</div>
+      <div class="priority-label">
+        <i class="fa-solid fa-exclamation"></i>
+        <div class="due-date">${note.dueDate}</div>
+      </div>
     </div> 
     `;
     })
