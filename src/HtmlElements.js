@@ -5,7 +5,10 @@ export function getNewNoteElement(note) {
   newNote.innerHTML = `
     <section class="note-header">
       <div class="title">${note.title}</div>
-      <div class="remove-note">&Cross;</div>
+      <div>
+        <i class="fa-solid fa-pen-to-square edit-note"></i>
+        <div class="remove-note">&Cross;</div>
+      </div>
     </section>
     <div class="description">${note.description}</div>
     <div class="priority-label">
@@ -51,7 +54,10 @@ export function getHtmlForNoteList(project) {
     <div class="note" data-id=${note.id}>
       <section class="note-header">
         <div class="title">${note.title}</div>
-        <div class="remove-note">&Cross;</div>
+        <div>
+          <i class="fa-solid fa-pen-to-square edit-note"></i>
+          <div class="remove-note">&Cross;</div>
+        </div>
       </section>
       <div class="description">${note.description}</div>
       <div class="priority-label">

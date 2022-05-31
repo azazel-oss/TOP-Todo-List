@@ -8,6 +8,7 @@ import {
   getNewNoteElement,
   getNewProjectElement,
 } from "./HtmlElements";
+import { openNoteModal } from "./ModalOperations";
 
 const logoImageEl = document.getElementById("todo_logo");
 const newProjectForm = document.getElementById("project-form");
@@ -17,6 +18,7 @@ const newNoteTitleEl = document.getElementById("note-title");
 const newNoteDescriptionEl = document.getElementById("note-description");
 const newNoteDueDateEl = document.getElementById("note-date");
 const newNotePriorityEl = document.getElementById("note-priority");
+const editNoteIdEl = document.getElementById("note-id");
 const projectListEl = document.getElementById("project-list-items");
 const noteListEl = document.getElementById("notes-list-items");
 const scratchPadEl = document.getElementById("scratchpad");
@@ -38,16 +40,26 @@ function addNewNote(event) {
   const description = newNoteDescriptionEl.value;
   const date = newNoteDueDateEl.value;
   const priority = newNotePriorityEl.value;
+  if (editNoteIdEl.value !== "") {
+    const note = currentProject.notes.find(
+      (note) => note.id === editNoteIdEl.value
+    );
+    note.title = title;
+    note.description = description;
+    note.dueDate = date;
+    note.priority = priority;
+    console.log(note);
+    noteListEl.innerHTML = getHtmlForNoteList(currentProject);
+    newNoteForm.reset();
+    return;
+  }
   currentProject.addNote(title, description, date, priority);
   console.log(currentProject.notes);
   if (currentProject.notes.length > 0) {
     addNoteBtn.style.display = "flex";
     emptyNoteEl.style.display = "none";
   }
-  newNoteTitleEl.value = "";
-  newNoteDescriptionEl.value = "";
-  newNoteDueDateEl.value = "dd/mm/yyyy";
-  newNotePriorityEl.value = 0;
+  newNoteForm.reset();
   noteListEl.appendChild(
     getNewNoteElement(currentProject.notes[currentProject.notes.length - 1])
   );
@@ -58,7 +70,7 @@ function addNewProject(event) {
   const projectName = newProjectName.value;
   const newProject = new Project(projectName);
   projectList.push(newProject);
-  newProjectName.value = "";
+  newProjectForm.reset();
   projectListEl.appendChild(getNewProjectElement(newProject));
 }
 
@@ -86,6 +98,16 @@ function noteClickHandler(event) {
       emptyNoteEl.style.display = "none";
       addNoteBtn.style.display = "flex";
     }
+  }
+  if (event.target.classList.contains("edit-note")) {
+    let clickedNote = currentProject.notes.find((note) => note.id === noteId);
+
+    editNoteIdEl.value = clickedNote.id;
+    newNoteTitleEl.value = clickedNote.title;
+    newNoteDescriptionEl.value = clickedNote.description;
+    newNoteDueDateEl.value = clickedNote.dueDate;
+    newNotePriorityEl.value = clickedNote.priority;
+    openNoteModal();
   }
 }
 
