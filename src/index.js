@@ -27,8 +27,15 @@ const addNoteBtn = document.querySelector(".new-note");
 
 logoImageEl.src = Logo;
 
-const scratchPad = new Project("Scratch Pad");
-let projectList = [];
+const scratchPad =
+  Object.assign(
+    new Project(),
+    JSON.parse(localStorage.getItem("scratchPadTOODOO"))
+  ) || new Project("Scratch Pad");
+let projectList =
+  JSON.parse(localStorage.getItem("projectListTOODOO")).map((project) =>
+    Object.assign(new Project(), project)
+  ) || [];
 let currentProject = scratchPad;
 
 newNoteForm.addEventListener("submit", addNewNote);
@@ -51,6 +58,8 @@ function addNewNote(event) {
     console.log(note);
     noteListEl.innerHTML = getHtmlForNoteList(currentProject);
     newNoteForm.reset();
+    localStorage.setItem("projectListTOODOO", JSON.stringify(projectList));
+    localStorage.setItem("scratchPadTOODOO", JSON.stringify(scratchPad));
     return;
   }
   currentProject.addNote(title, description, date, priority);
@@ -63,6 +72,8 @@ function addNewNote(event) {
   noteListEl.appendChild(
     getNewNoteElement(currentProject.notes[currentProject.notes.length - 1])
   );
+  localStorage.setItem("projectListTOODOO", JSON.stringify(projectList));
+  localStorage.setItem("scratchPadTOODOO", JSON.stringify(scratchPad));
 }
 
 function addNewProject(event) {
@@ -72,6 +83,8 @@ function addNewProject(event) {
   projectList.push(newProject);
   newProjectForm.reset();
   projectListEl.appendChild(getNewProjectElement(newProject));
+  localStorage.setItem("projectListTOODOO", JSON.stringify(projectList));
+  localStorage.setItem("scratchPadTOODOO", JSON.stringify(scratchPad));
 }
 
 projectListEl.addEventListener("click", projectClickHandler);
@@ -89,7 +102,8 @@ function noteClickHandler(event) {
     currentProject.notes = currentProject.notes.filter(
       (note) => note.id !== noteId
     );
-    console.log(noteId);
+    localStorage.setItem("projectListTOODOO", JSON.stringify(projectList));
+    localStorage.setItem("scratchPadTOODOO", JSON.stringify(scratchPad));
     noteListEl.innerHTML = getHtmlForNoteList(currentProject);
     if (currentProject.notes.length === 0) {
       emptyNoteEl.style.display = "flex";
@@ -136,9 +150,11 @@ function projectClickHandler(event) {
   if (event.target.classList.contains("remove")) {
     projectList = projectList.filter((project) => project.projectId !== id);
     projectListEl.innerHTML = getHtmlForProjectList(projectList);
+    localStorage.setItem("projectListTOODOO", JSON.stringify(projectList));
     if (element.classList.contains("active-project")) {
       currentProject = scratchPad;
       scratchPadEl.classList.add("active-project");
+      loadScratchPad();
       noteListEl.innerHTML = getHtmlForNoteList(currentProject);
     }
   }
@@ -154,4 +170,11 @@ function loadScratchPad() {
   }
 }
 
+function loadProjects() {
+  projectListEl.innerHTML = getHtmlForProjectList(projectList);
+  noteListEl.innerHTML = getHtmlForNoteList(scratchPad);
+}
+
 loadScratchPad();
+
+loadProjects();
