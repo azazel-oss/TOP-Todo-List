@@ -57,7 +57,6 @@ function addNewNote(event) {
     note.description = description;
     note.dueDate = date;
     note.priority = priority;
-    console.log(note);
     noteListEl.innerHTML = getHtmlForNoteList(currentProject);
     newNoteForm.reset();
     localStorage.setItem("projectListTOODOO", JSON.stringify(projectList));
@@ -65,7 +64,6 @@ function addNewNote(event) {
     return;
   }
   currentProject.addNote(title, description, date, priority);
-  console.log(currentProject.notes);
   if (currentProject.notes.length > 0) {
     addNoteBtn.style.display = "flex";
     emptyNoteEl.style.display = "none";
